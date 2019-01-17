@@ -47,6 +47,10 @@ Page({
             // 保存到全局用户变量
             app.setGlobalUserInfo(res.data.data);
 
+            // 注册成功跳转个人信息页面
+            wx.redirectTo({
+              url: '../mine/mine',
+            })
           } else if (status == 500) {
             wx.showToast({
               title: res.data.msg,

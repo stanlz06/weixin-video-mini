@@ -48,9 +48,14 @@ Page({
               icon: 'success',
               duration: 2000
             });
-
+            
             // 设置保存到全局用户变量
             app.setGlobalUserInfo(res.data.data);
+
+            // 登录成功跳转个人信息页面
+            wx.redirectTo({
+              url: '../mine/mine',
+            })
           }      
            // 失败弹出框
            else if (res.data.status == 500) {
