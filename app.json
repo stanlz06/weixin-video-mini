@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/login/login",
+    "pages/regist/regist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "5点1氪",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": true
+}
