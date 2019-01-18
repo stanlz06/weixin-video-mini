@@ -1,0 +1,15 @@
+<!-- 遍历onLoad中获取获取的videoList -->
+<view wx:for="{{videoList}}" class="item-container">
+  <!-- 视频展示 -->
+  <view style='width:{{screenWidth}}px;height:210px;' class='back-img'>
+    <image src="{{serverUrl}}{{item.coverPath}}" style='width:{{screenWidth}}px;height:210px;' mode="aspectFit" bindtap='showVideoInfo' data-arrindex='{{index}}'></image>
+  </view>
+
+  <!-- 用户信息 -->
+  <view class="desc">
+    <view class="faceName">
+      <image class='myface' src="{{serverUrl}}{{item.faceImage}}"></image>
+      <view class="nickname">{{item.nickname}}</view>
+    </view>
+  </view>
+</view>

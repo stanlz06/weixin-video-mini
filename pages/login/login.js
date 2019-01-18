@@ -1,7 +1,19 @@
 const app = getApp()
 
 Page({
+  // params:获取videoinfo页面传递的参数
   onLoad: function(params) {
+    var me = this;
+
+    var redirectUrl = params.redirectUrl;
+
+    if (redirectUrl != null && redirectUrl != undefined && redirectUrl != '') {
+      // 利用正则把#转为?,@转为=
+      redirectUrl = redirectUrl.replace(/#/g, "?");
+      redirectUrl = redirectUrl.replace(/@/g, "=");
+
+      me.redirectUrl = redirectUrl;
+    }
   },
 
   // 登录方法  
@@ -11,7 +23,7 @@ Page({
     var formObject = e.detail.value;
     var username = formObject.username;
     var password = formObject.password;
-    
+
     // 简单验证
     if (username.length == 0 || password.length == 0) {
       wx.showToast({
@@ -47,17 +59,27 @@ Page({
               icon: 'success',
               duration: 2000
             });
-            
+
             // 设置保存到全局用户变量
             app.setGlobalUserInfo(res.data.data);
 
-            // 登录成功跳转个人信息页面
-            wx.redirectTo({
-              url: '../mine/mine',
-            })
-          }      
-           // 失败弹出框
-           else if (res.data.status == 500) {
+            // 重定向url
+            var redirectUrl = me.redirectUrl;
+
+            // videoinfo.upload方法跳转过来的,登录之后返回videoinfo页面
+            if (redirectUrl != null && redirectUrl != undefined && redirectUrl != '') {
+              wx.redirectTo({
+                url: redirectUrl,
+              })
+            } else {
+              // 否则跳转到mine页面
+              wx.redirectTo({
+                url: '../mine/mine',
+              })
+            }
+          }
+          // 失败弹出框
+          else if (res.data.status == 500) {
             wx.showToast({
               title: res.data.msg,
               icon: 'none',
