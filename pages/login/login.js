@@ -38,7 +38,6 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function(res) {
-          console.log(res.data);
           wx.hideLoading();
 
           // 登录成功跳转 

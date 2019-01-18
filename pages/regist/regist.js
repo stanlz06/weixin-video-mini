@@ -34,10 +34,9 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function(res) {
-          console.log(res.data);
           wx.hideLoading();
-          var status = res.data.status;
-          if (status == 200) {
+          
+          if (res.data.status == 200) {
             wx.showToast({
                 title: "用户注册成功~！！！",
                 icon: 'none',
@@ -51,7 +50,7 @@ Page({
             wx.redirectTo({
               url: '../mine/mine',
             })
-          } else if (status == 500) {
+          } else if (res.data.status == 500) {
             wx.showToast({
               title: res.data.msg,
               icon: 'none',

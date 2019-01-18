@@ -30,7 +30,7 @@ function uploadVideo() {
       } else {
         // 选择视频后跳转到选择bgm的页面
         wx.navigateTo({
-          url: '../chooseBgm/chooseBgm?duration=' + duration
+          url: '../bgm/bgm?duration=' + duration
             + "&tmpHeight=" + tmpHeight
             + "&tmpWidth=" + tmpWidth
             + "&tmpVideoUrl=" + tmpVideoUrl

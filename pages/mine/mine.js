@@ -15,7 +15,6 @@ Page({
     var userId = user.id;
 
       me.setData({
-
         serverUrl: app.serverUrl
       })
     
@@ -44,6 +43,8 @@ Page({
           var userInfo = res.data.data;
           // 默认给一张头像
           var faceUrl = "../resource/images/noneface.png";
+          
+          // 用户已经上传过头像则显示
           if (userInfo.faceImage != null && userInfo.faceImage != '' && userInfo.faceImage != undefined) {
             faceUrl = serverUrl + userInfo.faceImage;
           }
@@ -72,7 +73,7 @@ Page({
     })
   },
 
-    // 注销方法
+  // 注销方法
   logout: function () {
     var user = app.getGlobalUserInfo();
     var serverUrl = app.serverUrl;
@@ -108,6 +109,7 @@ Page({
       }
     })
   },
+
   // 上传头像方法
   changeFace: function () {
     var me = this;
@@ -170,5 +172,10 @@ Page({
         })
       }
     })
+  },
+  
+  // 点击上传视频调用公共方法
+  uploadVideo: function () {
+    videoUtil.uploadVideo();
   },
 })
