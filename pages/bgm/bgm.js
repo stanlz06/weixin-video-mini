@@ -2,15 +2,21 @@ const app = getApp()
 
 Page({
   data: {
+    // bgm列表
     bgmList: [],
+
+    //全局url
     serverUrl: "",
+
+    // onLoad中获取视频参数
     videoParams: {}
   },
 
-  // 通过params获取到选择视频页面转递过来的视频信息并赋值给videoParams
+  // 通过params获取到选择视频页面转递过来的视频信息
   onLoad: function(params) {
     var me = this;
-    console.log(params);
+
+    // 赋值给videoParams
     me.setData({
       videoParams: params
     });
@@ -18,6 +24,7 @@ Page({
     wx.showLoading({
       title: '请等待...',
     });
+
     var serverUrl = app.serverUrl;
     var user = app.getGlobalUserInfo();
     // 调用后端获取bgm列表
@@ -31,7 +38,6 @@ Page({
         'headerUserToken': user.userToken
       },
       success: function(res) {
-        console.log(res.data);
         wx.hideLoading();
         if (res.data.status == 200) {
           var bgmList = res.data.data;
@@ -62,10 +68,6 @@ Page({
     var bgmId = e.detail.value.bgmId;
     var desc = e.detail.value.desc;
 
-    console.log("bgmId:" + bgmId);
-    console.log("desc:" + desc);
-
-// 从videoParams中获取保存的视频信息
     var duration = me.data.videoParams.duration;
     var tmpHeight = me.data.videoParams.tmpHeight;
     var tmpWidth = me.data.videoParams.tmpWidth;
