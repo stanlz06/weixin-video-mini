@@ -66,6 +66,7 @@ Page({
     // 获取查询内容 
     var searchContent = me.data.searchContent;
 
+    // 调用后端获取视频列表
     wx.request({
       url: serverUrl + '/video/showAll?page=' + page + "&isSaveRecord=" + isSaveRecord,
       method: "POST",
@@ -77,6 +78,7 @@ Page({
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
 
+        // 显示回传内容
         console.log(res.data);
 
         // 判断当前页page是否是第一页，如果是第一页，那么设置videoList为空

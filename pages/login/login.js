@@ -66,7 +66,7 @@ Page({
             // 重定向url
             var redirectUrl = me.redirectUrl;
 
-            // videoinfo.upload方法跳转过来的,登录之后返回videoinfo页面
+            // 跳转到指定url
             if (redirectUrl != null && redirectUrl != undefined && redirectUrl != '') {
               wx.redirectTo({
                 url: redirectUrl,

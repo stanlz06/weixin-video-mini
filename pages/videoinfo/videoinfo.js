@@ -31,7 +31,7 @@ Page({
 
   // params:接收index.showVideoInfo传递的参数
   onLoad: function(params) {
-    var me = this;
+    var me = this; 
     // 供用户操作video组件
     me.videoCtx = wx.createVideoContext("myVideo", me);
 
@@ -70,7 +70,9 @@ Page({
       success: function(res) {
         console.log(res.data);
 
+        // 发布者信息
         var publisher = res.data.data.publisher;
+        // 登录用户是否喜欢所点视频
         var userLikeVideo = res.data.data.userLikeVideo;
 
         me.setData({

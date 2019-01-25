@@ -1,6 +1,6 @@
 App({
   // 服务器url
-  serverUrl: "http://192.168.1.105:8081",
+  serverUrl: "http://192.168.1.103:8081",
 
   // 用户对象设置到本地缓存中
   setGlobalUserInfo: function(user) {

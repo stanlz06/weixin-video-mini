@@ -345,10 +345,10 @@ Page({
   getMyVideoList: function (page) {
     var me = this;
 
-    // 查询视频信息
     wx.showLoading();
-    // 调用后端
     var serverUrl = app.serverUrl;
+    
+    //调用后端
     wx.request({
       url: serverUrl + '/video/showAll/?page=' + page + '&pageSize=6',
       method: "POST",
